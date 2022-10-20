@@ -1,20 +1,31 @@
-mat-card {
-  max-width: 80%;
+.container {
+
   margin: 2em auto;
   text-align: center;
-  width: 30%;
+  width: center;
+  max-width: 350px;
   padding-top: 10px;
 
 }
 
-.margin-login {
-  margin: 30px;
-}
 
 button{
   padding: 5px;
   margin: 5px;
+  width: 70%;
+  max-width: 300px;
 }
+.forms {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 70%;
+  max-width: 300px;
+}
+
 
 mat-card-title{
 

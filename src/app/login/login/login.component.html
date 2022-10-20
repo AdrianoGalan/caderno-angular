@@ -1,43 +1,43 @@
-<div>
+<mat-card class="container">
 
-  <mat-card>
     <mat-card-title>Login</mat-card-title>
+    <br>
 
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-
-      <div class="margin-login">
+    <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
 
-        <mat-form-field  appearance="fill">
+
+      <mat-card-actions>
+        <mat-form-field class="full-width" appearance="fill">
           <mat-label>Email</mat-label>
           <input type="email" matInput placeholder="pat@example.com" id="email" formControlName="email" required>
           <mat-error *ngIf="formulario.get('email')?.hasError">{{getErrorMessage('Email invalido')}}</mat-error>
         </mat-form-field>
 
-      </div>
 
 
-      <div class="margin-login">
-
-        <mat-form-field  appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input type="password" matInput id="senha" formControlName="senha" required>
-        <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('Digite a Senha')}}</mat-error>
-
-      </mat-form-field>
-
-      </div>
+        <br>
 
 
-      
-      <div class="margin-login">
-        <button mat-button>Cancelar</button>
+        <mat-form-field class="full-width"  appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput id="senha" formControlName="senha" required>
+          <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('Digite a Senha')}}</mat-error>
+
+        </mat-form-field>
+      </mat-card-actions>
+
+
+
+
+      <mat-card-actions>
+
         <button type="submit" mat-raised-button color="primary">Entrar</button>
-      </div>
 
+      </mat-card-actions>
 
 
     </form>
 
-  </mat-card>
-</div>
+
+</mat-card>
