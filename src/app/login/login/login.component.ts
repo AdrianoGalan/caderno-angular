@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioLogin } from 'src/app/model/usuarioLogin';
 
-import { Usuario } from './../../model/usuairo';
 import { AuthService } from './../auth.service';
 
 @Component({
@@ -11,7 +10,9 @@ import { AuthService } from './../auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
   formulario!: FormGroup;
+
   usuario: UsuarioLogin = new UsuarioLogin();
   submitted = false;
 
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if(this.formulario.valid){
       this.usuario.senha = this.formulario.value['senha'];
-      this.usuario.email = this.formulario.value['email']
+      this.usuario.email = this.formulario.value['email'];
 
       this.authService.login(this.usuario);
     }
