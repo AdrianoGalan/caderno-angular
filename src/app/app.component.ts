@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './login/auth.service';
+import { Usuario } from './model/usuairo';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'caderno-angular';
+
+  mostrarMenu: boolean = false;
+  usuario!: Usuario;
+
+  constructor(private authService: AuthService) {
+    this.authService.mostrarMenuEmitter.subscribe(
+
+      mostrar => this.mostrarMenu = mostrar
+
+    );
+  }
+
+  logout() {
+    this.authService.toLogout();
+  }
+
 }
