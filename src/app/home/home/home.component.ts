@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Usuario } from './../../model/usuairo';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -25,9 +26,8 @@ export class HomeComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      email1: [null, [Validators.required, Validators.email]],
-      senha: [null, Validators.required],
-      senha1: [null, Validators.required],
+      senha: [null, [Validators.required]],
+      outraSenha: [null, Validators.required]
     });
   }
 
@@ -36,44 +36,38 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.formulario.value['email'] == this.formulario.value['email1']) {
-      if (this.formulario.value['senha'] == this.formulario.value['senha1']) {
-        if (this.formulario.valid) {
 
-          this.usuarioService.getUsuarioByEmail(this.formulario.value['email']).subscribe({
-            next: () => {
+    if (this.formulario.value['senha'] == this.formulario.value['outraSenha']) {
+      if (this.formulario.valid) {
 
-              this.snackBar.open('Email Já Cadastrado', 'Ok', {
-                duration: 3000,
-              });
+        this.usuarioService.insert(this.formulario.value).subscribe({
+          next: (rest) => {
+            console.log(rest)
 
-            },
-            error: (erro) => {
-             
-
-            }
-          });
-
-
-        }
-      } else {
-        this.snackBar.open('Senhas não são iguais', 'Ok', {
-          duration: 3000,
+          },
+          error: (erro) => {
+            this.snackBar.open('erro', 'Ok', {
+              duration: 3000,
+            })
+          }
         });
+
+
       }
     } else {
-
-      this.snackBar.open('Emails não são iguais', 'Ok', {
+      this.snackBar.open('Senhas não são iguais', 'Ok', {
         duration: 3000,
       });
     }
-
   }
-
-
-
   getErrorMessage(msg: string) {
     return msg;
   }
 
 }
+
+
+
+
+
+

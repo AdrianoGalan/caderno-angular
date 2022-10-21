@@ -1,10 +1,10 @@
 export class Usuario {
 
-  id!: string;
+  id!: number;
   nome!: string;
   email!: string;
   senha!: string;
   perfis!: number[];
-  status!: string;
+  status!: number;
 
 }
