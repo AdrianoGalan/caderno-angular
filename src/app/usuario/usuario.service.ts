@@ -26,7 +26,13 @@ export class UsuarioService {
 
   insert(usuario: Usuario) {
     return this.http
-      .post<Usuario>(this.API, usuario)
+      .post<Url>(this.API, usuario)
+      .pipe(first());
+  }
+
+  update(usuario: Usuario) {
+    return this.http
+      .put<URL>(`${this.API}update`, usuario)
       .pipe(first());
   }
 

@@ -3,15 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Usuario } from './../../model/usuairo';
-import { ConnectableObservable } from 'rxjs';
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-atualizar-usuario',
+  templateUrl: './atualizar-usuario.component.html',
+  styleUrls: ['./atualizar-usuario.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class AtualizarUsuarioComponent implements OnInit {
 
   formulario: FormGroup;
   hide = true;
@@ -69,9 +66,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
-
-
-
-
-

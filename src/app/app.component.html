@@ -15,10 +15,16 @@
         <mat-icon>unfold_less</mat-icon>
         <span>Maquina</span>
       </button>
-      <button mat-menu-item [routerLink]="''">
+      <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" [routerLink]="''">
         <mat-icon>density_large</mat-icon>
         <span>Usuarios</span>
       </button>
+
+
+      <mat-menu #menuUsuarios="matMenu">
+        <button mat-menu-item [routerLink]="'usuario/new'">Novo</button>
+        <button mat-menu-item [routerLink]="'usuario/update'">Atualizar</button>
+      </mat-menu>
     </mat-menu>
 
 
