@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Usuario } from './../../model/usuairo';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,15 +19,14 @@ export class AtualizarUsuarioComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private usuarioService: UsuarioService
   ) {
-    this.getUsuario();
-
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [localStorage.getItem("email")],
       senha: [null, [Validators.required]],
       outraSenha: [null, Validators.required]
     });
@@ -35,25 +35,11 @@ export class AtualizarUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getUsuario() {
 
-    if (!this.usuario.nome) {
-
-
-      this.usuarioService.getUsuarioByEmail(localStorage.getItem("email")!).subscribe({
-        next: (usu) => {
-          this.usuario = usu;
-
-          this.formulario.value['email'] = "usu.email";
-        }
-      })
-
-
-    }
-
-  }
 
   onSubmit() {
+
+    this.formulario.value['email'] = localStorage.getItem("email");
 
 
     if (this.formulario.value['senha'] == this.formulario.value['outraSenha']) {
@@ -63,7 +49,8 @@ export class AtualizarUsuarioComponent implements OnInit {
         this.usuarioService.update(this.formulario.value).subscribe({
           next: (rest) => {
 
-            console.log(rest)
+            localStorage.clear();
+            this.router.navigate(['login'])
 
           },
           error: (erro) => {

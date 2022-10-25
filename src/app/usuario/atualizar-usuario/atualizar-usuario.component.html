@@ -9,7 +9,7 @@
     <mat-card-actions>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Nome</mat-label>
-        <input type="text" matInput placeholder="Jose Silva" id="nome" formControlName="nome" required>
+        <input type="text" matInput placeholder="Jose Silva"  id="nome" formControlName="nome" required>
         <mat-error *ngIf="formulario.get('nome')?.hasError">{{getErrorMessage('preencha o nome')}}</mat-error>
       </mat-form-field>
 
@@ -20,7 +20,7 @@
 
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="pat@example.com" id="email" formControlName="email" required>
+        <input type="email" matInput placeholder="pat@example.com"  id="email" formControlName="email" >
         <mat-error *ngIf="formulario.get('email')?.hasError">{{getErrorMessage('Email invalido')}}</mat-error>
       </mat-form-field>
 
@@ -28,7 +28,7 @@
 
       <mat-form-field class="full-width"  appearance="fill">
         <mat-label>Senha</mat-label>
-        <input [type]="hide ? 'password' : 'text'" matInput id="senha" formControlName="senha" required>
+        <input [type]="hide ? 'password' : 'text'"  matInput id="senha" formControlName="senha" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" >
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
