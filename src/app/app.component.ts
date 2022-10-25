@@ -1,3 +1,4 @@
+import { UsuarioService } from './usuario/usuario.service';
 import { Component } from '@angular/core';
 import { AuthService } from './login/auth.service';
 import { Usuario } from './model/usuairo';
@@ -11,14 +12,36 @@ export class AppComponent {
   title = 'caderno-angular';
 
   mostrarMenu: boolean = false;
-  usuario!: Usuario;
 
-  constructor(private authService: AuthService) {
+  usuario: Usuario = new Usuario();
+
+  constructor(private authService: AuthService,
+    private usuarioService: UsuarioService
+    ) {
     this.authService.mostrarMenuEmitter.subscribe(
 
-      mostrar => this.mostrarMenu = mostrar
-
+      mostrar => {
+        this.mostrarMenu = mostrar
+        this.getUsuario()
+      }
     );
+
+   // this.getUsuario();
+
+
+  }
+
+  getUsuario() {
+
+    if(!this.usuario.nome){
+
+      this.usuarioService.getUsuarioByEmail(localStorage.getItem("email")!).subscribe({
+        next:(usu) => this.usuario = usu
+      })
+
+
+    }
+
   }
 
   logout() {

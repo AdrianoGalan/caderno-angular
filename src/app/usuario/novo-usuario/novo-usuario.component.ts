@@ -73,11 +73,7 @@ export class NovoUsuarioComponent implements OnInit {
     this.usuarioService.insert(this.formulario.value).subscribe({
       next: () => {
 
-
-
-          this.router.navigate(['']);
-
-
+        this.router.navigate(['']);
 
       },
       error: (erro) => {
