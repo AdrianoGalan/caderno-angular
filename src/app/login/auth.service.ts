@@ -66,6 +66,7 @@ export class AuthService {
         if (u.restSenha == 1) {
 
           this.router.navigate(['/usuario/update']);
+          localStorage.setItem('email', usuario.email)
 
 
         } else {

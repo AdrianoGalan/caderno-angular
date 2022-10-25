@@ -1,3 +1,4 @@
+import { Usuario } from './../../model/usuairo';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,6 +13,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
   formulario: FormGroup;
   hide = true;
+  usuario: Usuario = new Usuario();
 
 
 
@@ -20,6 +22,8 @@ export class AtualizarUsuarioComponent implements OnInit {
     private snackBar: MatSnackBar,
     private usuarioService: UsuarioService
   ) {
+    this.getUsuario();
+
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
@@ -29,6 +33,24 @@ export class AtualizarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getUsuario() {
+
+    if (!this.usuario.nome) {
+
+
+      this.usuarioService.getUsuarioByEmail(localStorage.getItem("email")!).subscribe({
+        next: (usu) => {
+          this.usuario = usu;
+
+          this.formulario.value['email'] = "usu.email";
+        }
+      })
+
+
+    }
+
   }
 
   onSubmit() {
