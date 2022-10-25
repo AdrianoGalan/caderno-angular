@@ -15,7 +15,7 @@
         <mat-icon>unfold_less</mat-icon>
         <span>Maquina</span>
       </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" [routerLink]="''">
+      <button *ngIf="usuario.perfis.length > 1" mat-menu-item [matMenuTriggerFor]="menuUsuarios" [routerLink]="''">
         <mat-icon>density_large</mat-icon>
         <span>Usuarios</span>
       </button>
@@ -30,7 +30,7 @@
 
     <span>Caderno</span>
     <span class="example-spacer"></span>
-    <span> {{usuario.nome}} </span>
+    <span>{{usuario.nome}} </span>
     <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>logout</mat-icon>
     </button>

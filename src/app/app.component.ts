@@ -1,5 +1,5 @@
 import { UsuarioService } from './usuario/usuario.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './login/auth.service';
 import { Usuario } from './model/usuairo';
 
@@ -17,26 +17,39 @@ export class AppComponent {
 
   constructor(private authService: AuthService,
     private usuarioService: UsuarioService
-    ) {
+  ) {
+    this.usuario.nome = 'usuario';
+    this.usuario.perfis = [];
+
     this.authService.mostrarMenuEmitter.subscribe(
 
       mostrar => {
         this.mostrarMenu = mostrar
         this.getUsuario()
+
       }
     );
 
-   // this.getUsuario();
 
 
   }
 
+
+
   getUsuario() {
 
-    if(!this.usuario.nome){
+    if (localStorage.getItem("email") != this.usuario.email) {
 
       this.usuarioService.getUsuarioByEmail(localStorage.getItem("email")!).subscribe({
-        next:(usu) => this.usuario = usu
+        next: (usu) => {
+
+          if (usu) {
+            this.usuario = usu
+
+          }
+
+        }
+
       })
 
 

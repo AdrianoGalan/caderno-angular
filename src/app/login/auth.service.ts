@@ -20,9 +20,14 @@ export class AuthService {
     private usuarioService: UsuarioService,
     private loginService: LoginService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {
+
+    
+
+  }
 
   login(usuario: UsuarioLogin) {
+
     this.checkFirstLogin(usuario);
 
   }
