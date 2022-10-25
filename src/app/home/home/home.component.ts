@@ -1,10 +1,9 @@
-import { UsuarioService } from './../../usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
-import { Usuario } from './../../model/usuairo';
-import { ConnectableObservable } from 'rxjs';
+import { UsuarioService } from './../../usuario/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +12,13 @@ import { ConnectableObservable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  formulario: FormGroup;
-  hide = true;
 
 
 
   constructor(
-    private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar,
-    private usuarioService: UsuarioService
+
   ) {
-    this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required]],
-      outraSenha: [null, Validators.required]
-    });
+
   }
 
   ngOnInit(): void {
@@ -37,33 +27,11 @@ export class HomeComponent implements OnInit {
   onSubmit() {
 
 
-    if (this.formulario.value['senha'] == this.formulario.value['outraSenha']) {
-      if (this.formulario.valid) {
 
 
-        this.usuarioService.update(this.formulario.value).subscribe({
-          next: (rest) => {
-
-            console.log(rest)
-
-          },
-          error: (erro) => {
-            this.snackBar.open('erro', 'Ok', {
-              duration: 3000,
-            })
-          }
-        });
-
-
-
-
-      }
-    } else {
-      this.snackBar.open('Senhas não são iguais', 'Ok', {
-        duration: 3000,
-      });
-    }
   }
+
+
   getErrorMessage(msg: string) {
     return msg;
   }

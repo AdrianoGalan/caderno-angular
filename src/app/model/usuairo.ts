@@ -6,5 +6,6 @@ export class Usuario {
   senha!: string;
   perfis!: number[];
   status!: number;
+  restSenha!: number;
 
 }
