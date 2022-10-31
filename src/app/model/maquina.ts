@@ -6,10 +6,10 @@ export class Maquina {
 
   id!: number;
   sigla!: string;
-  procedimento!: Procedimento[];
-  alarme!: Alarme[];
-  defeito!: Defeito[];
-  senha!: Senha[];
+  procedimentos!: Procedimento[];
+  alarmes!: Alarme[];
+  defeitos!: Defeito[];
+  senhas!: Senha[];
 
 
 }

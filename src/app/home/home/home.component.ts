@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { Alarme } from './../../model/alarme';
 import { MaquinaService } from './../../maquina/maquina.service';
 import { Maquina } from './../../model/maquina';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +16,7 @@ import { UsuarioService } from './../../usuario/usuario.service';
 })
 export class HomeComponent implements OnInit {
 
-
+  alarmes$!: Observable<Alarme[]>;
   formulario: FormGroup;
   maquina: Maquina = new Maquina();
 
@@ -27,6 +29,22 @@ export class HomeComponent implements OnInit {
 
       sigla: [null, [Validators.required]]
 
+    });
+
+    this.service.getBySigla('cbc').subscribe({
+      next: (m) => {
+        if(m){
+          console.log(m)
+        
+
+        }else{
+
+          this.snackBar.open('Maquina não cadastrada', 'Ok', {
+            duration: 3000,
+          });
+
+        }
+      }
     });
 
   }
@@ -45,19 +63,7 @@ export class HomeComponent implements OnInit {
 
     if (this.formulario.valid) {
 
-      this.service.getBySigla(this.formulario.value['sigla']).subscribe({
-        next: (m) => {
-          if(m){
-            console.log(m)
-          }else{
 
-            this.snackBar.open('Maquina não cadastrada', 'Ok', {
-              duration: 3000,
-            });
-
-          }
-        }
-      });
     } else {
 
       this.snackBar.open('Digite a Sigla', 'Ok', {

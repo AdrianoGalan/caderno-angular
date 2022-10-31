@@ -1,1 +1,41 @@
-<p>maquina works!</p>
+<mat-card class="container">
+
+  <mat-card-title>Maquina</mat-card-title>
+  <br>
+
+  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+    <mat-card-actions>
+
+
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Sigla</mat-label>
+        <input type="text" matInput placeholder="Digite a sigla da maquina" id="sigla" formControlName="sigla" required>
+        <mat-error *ngIf="formulario.get('sigla')?.hasError">{{getErrorMessage('Digite a sigla')}}</mat-error>
+      </mat-form-field>
+
+      <br>
+
+
+
+
+
+
+    </mat-card-actions>
+
+
+
+
+    <mat-card-actions>
+
+      <button type="submit" mat-raised-button color="primary">Buscar</button>
+
+    </mat-card-actions>
+
+
+  </form>
+
+
+</mat-card>
