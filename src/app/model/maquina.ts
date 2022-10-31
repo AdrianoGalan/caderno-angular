@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Defeito } from './defeito';
 import { Senha } from './senha';
 import { Alarme } from './alarme';

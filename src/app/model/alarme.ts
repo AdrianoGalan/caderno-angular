@@ -3,7 +3,8 @@ export class Alarme {
 
   id!: number;
   codigo!: string;
-  defeito!: Defeito;
+  descricao!: string;
+  solucao!: string;
 
 
 }
