@@ -19,6 +19,10 @@ export class MaquinaService {
     return this.http.get<Maquina[]>(this.API).pipe(take(1));
   }
 
+  getBySigla(sigla: string){
+    return this.http.get<Maquina>(`${this.API}/${sigla}`).pipe(take(1));
+  }
+
 
 
   insert(obj: Maquina) {
