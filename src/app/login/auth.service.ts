@@ -22,7 +22,7 @@ export class AuthService {
     private snackBar: MatSnackBar
   ) {
 
-    
+
 
   }
 
@@ -89,7 +89,6 @@ export class AuthService {
             (error) => {
               this.usuarioAutenticado = false;
               this.mostrarMenuEmitter.emit(false);
-              console.log(error)
               this.snackBar.open('Email ou senha invalido', 'Ok', {
                 duration: 3000,
               });

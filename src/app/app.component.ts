@@ -45,7 +45,6 @@ export class AppComponent {
 
           if (usu) {
             this.usuario = usu
-            console.log(this.usuario)
 
           }
 

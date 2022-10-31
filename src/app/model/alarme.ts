@@ -1,7 +1,9 @@
 import { Defeito } from './defeito';
-export class Alarme extends Defeito {
+export class Alarme {
 
-codigo!: string;
+  id!: number;
+  codigo!: string;
+  defeito!: Defeito;
 
 
 }
