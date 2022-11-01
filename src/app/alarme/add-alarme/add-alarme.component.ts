@@ -1,10 +1,11 @@
-import { AlarmeService } from './../alarme.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Maquina } from 'src/app/model/maquina';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Alarme } from 'src/app/model/alarme';
+import { Maquina } from 'src/app/model/maquina';
+
+import { AlarmeService } from './../alarme.service';
 
 @Component({
   selector: 'app-add-alarme',
@@ -63,7 +64,7 @@ export class AddAlarmeComponent implements OnInit {
 
 
 
-      
+
 
     } else {
 

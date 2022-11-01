@@ -25,7 +25,8 @@
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpandAlarme.length">
-            <div class="example-element-detail" [@detailExpand]="element == expandedElementAlarme ? 'expanded' : 'collapsed'">
+            <div class="example-element-detail"
+              [@detailExpand]="element == expandedElementAlarme ? 'expanded' : 'collapsed'">
 
               <div class="example-element-description">
                 <span>Solução:</span>
@@ -44,12 +45,9 @@
       </table>
 
       <div class="example-button-container">
-        <button mat-mini-fab color="primary" (click)="openDialog()" aria-label="Adiciona um alarme">
+        <button mat-mini-fab color="primary" (click)="openDialog(0)" aria-label="Adiciona um alarme">
           <mat-icon>add</mat-icon>
         </button>
-
-      
-
       </div>
 
     </mat-tab>
@@ -74,7 +72,8 @@
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpandDefeito.length">
-            <div class="example-element-detail" [@detailExpand]="element == expandedElementDefeito ? 'expanded' : 'collapsed'">
+            <div class="example-element-detail"
+              [@detailExpand]="element == expandedElementDefeito ? 'expanded' : 'collapsed'">
 
               <div class="example-element-description">
                 <span>Solução:</span>
@@ -91,6 +90,12 @@
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
       </table>
+
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="openDialog(1)" aria-label="Adiciona um alarme">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
 
 
     </mat-tab>
@@ -115,7 +120,8 @@
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpandProcedimento.length">
-            <div class="example-element-detail" [@detailExpand]="element == expandedElementProcedimento ? 'expanded' : 'collapsed'">
+            <div class="example-element-detail"
+              [@detailExpand]="element == expandedElementProcedimento ? 'expanded' : 'collapsed'">
 
               <div class="example-element-description">
                 <span>Solução:</span>
@@ -126,8 +132,8 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpandProcedimento"></tr>
-        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpandProcedimento;" class="example-element-row"
-          [class.example-expanded-row]="expandedElementProcedimento === element"
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpandProcedimento;"
+          class="example-element-row" [class.example-expanded-row]="expandedElementProcedimento === element"
           (click)="expandedElementProcedimento = expandedElementProcedimento === element ? null : element">
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
@@ -155,7 +161,8 @@
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpandSenha.length">
-            <div class="example-element-detail" [@detailExpand]="element == expandedElementSenha ? 'expanded' : 'collapsed'">
+            <div class="example-element-detail"
+              [@detailExpand]="element == expandedElementSenha ? 'expanded' : 'collapsed'">
 
               <div class="example-element-description">
                 <span>Solução:</span>

@@ -1,3 +1,4 @@
+import { DefeitoModule } from './../../defeito/defeito.module';
 import { AlarmeModule } from './../../alarme/alarme.module';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Maquina } from 'src/app/model/maquina';
 
+import { AddDefeitoComponent } from './../../defeito/add-defeito/add-defeito.component';
 import { AddAlarmeComponent } from './../../alarme/add-alarme/add-alarme.component';
 import { MaquinaService } from './../../maquina/maquina.service';
 import { Alarme } from './../../model/alarme';
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
 
 
 
+  com: any[] = [AddAlarmeComponent, AddDefeitoComponent]
   maquina!: Maquina;
   alarmes!: Alarme[];
   defeitos!: Defeito[];
@@ -39,6 +42,7 @@ export class HomeComponent implements OnInit {
   senhas!: Senha[];
   formulario: FormGroup;
   sigla: string = 'Maquina';
+
 
   columnsToDisplayAlarme = ['codigo', 'descricao'];
   columnsToDisplayWithExpandAlarme = [...this.columnsToDisplayAlarme, 'expand'];
@@ -136,8 +140,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddAlarmeComponent, {
+  openDialog(pos: number): void {
+
+    const dialogRef = this.dialog.open(this.com[pos], {
       width: '350px',
       data: this.maquina,
     });
