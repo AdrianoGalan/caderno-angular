@@ -1,6 +1,8 @@
+import { Maquina } from 'src/app/model/maquina';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MaquinaService } from './../../maquina/maquina.service';
@@ -8,6 +10,7 @@ import { Alarme } from './../../model/alarme';
 import { Defeito } from './../../model/defeito';
 import { Procedimento } from './../../model/procedimento';
 import { Senha } from './../../model/senha';
+
 
 @Component({
   selector: 'app-home',
@@ -25,6 +28,9 @@ import { Senha } from './../../model/senha';
 export class HomeComponent implements OnInit {
 
 
+
+
+  maquina!: Maquina;
   alarmes!: Alarme[];
   defeitos!: Defeito[];
   procedimentos!: Procedimento[];
@@ -51,7 +57,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: MaquinaService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) {
 
     this.formulario = this.formBuilder.group({
 
@@ -62,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.service.getBySigla('aaa').subscribe({
       next: (m) => {
         if (m) {
-
+          this.maquina = m;
           this.alarmes = m.alarmes;
           this.defeitos = m.defeitos;
           this.procedimentos = m.procedimentos;
@@ -109,7 +117,7 @@ export class HomeComponent implements OnInit {
 
   onAdd(arg0: string) {
 
-    
+
 
     switch (arg0) {
       case 'alarme':
@@ -120,4 +128,18 @@ export class HomeComponent implements OnInit {
         break;
     }
   }
+
+
+  openDialog(): void {
+    // const dialogRef = this.dialog.open(AddAlarmeComponent, {
+    //   width: '250px',
+    //   data: this.maquina,
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(result);
+
+    // });
+  }
 }
+
