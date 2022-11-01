@@ -1,6 +1,4 @@
-import { AlarmeRoutingModule } from './../../alarme/alarme-routing.module';
 import { AlarmeModule } from './../../alarme/alarme.module';
-import { MaterialModule } from 'src/material.module';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
