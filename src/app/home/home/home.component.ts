@@ -1,4 +1,4 @@
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,14 +15,15 @@ import { Senha } from './../../model/senha';
   templateUrl: './home.component.html',
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
 
 export class HomeComponent implements OnInit {
+
 
   alarmes!: Alarme[];
   defeitos!: Defeito[];
@@ -31,10 +32,21 @@ export class HomeComponent implements OnInit {
   formulario: FormGroup;
   sigla: string = 'Maquina';
 
-  columnsToDisplay = ['codigo', 'descricao'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: Alarme | null | undefined;
+  columnsToDisplayAlarme = ['codigo', 'descricao'];
+  columnsToDisplayWithExpandAlarme = [...this.columnsToDisplayAlarme, 'expand'];
+  expandedElementAlarme: Alarme | null | undefined;
 
+  columnsToDisplayDefeito = ['descricao'];
+  columnsToDisplayWithExpandDefeito = [...this.columnsToDisplayDefeito, 'expand'];
+  expandedElementDefeito: Defeito | null | undefined;
+
+  columnsToDisplayProcedimento = ['descricao'];
+  columnsToDisplayWithExpandProcedimento = [...this.columnsToDisplayProcedimento, 'expand'];
+  expandedElementProcedimento: Defeito | null | undefined;
+
+  columnsToDisplaySenha = ['login', 'senha'];
+  columnsToDisplayWithExpandSenha = [...this.columnsToDisplaySenha, 'expand'];
+  expandedElementSenha: Defeito | null | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -95,8 +107,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.buscar();
-  }
+  onAdd(arg0: string) {
 
+    
+
+    switch (arg0) {
+      case 'alarme':
+
+        break;
+
+      default:
+        break;
+    }
+  }
 }

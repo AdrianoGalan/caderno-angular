@@ -6,6 +6,9 @@
 
 }
 
+table{
+  margin-top: 20px;
+}
 
 mat-card-title{
 
@@ -60,4 +63,12 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: right;
+  margin: 2em auto;
+  max-width: 1000px;
+  padding: 8px;
 }
