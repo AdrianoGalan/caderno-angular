@@ -69,6 +69,11 @@ export class HomeComponent implements OnInit {
 
     });
 
+    this.buscaMaquina();
+
+  }
+
+  buscaMaquina() {
     this.service.getBySigla('aaa').subscribe({
       next: (m) => {
         if (m) {
@@ -90,7 +95,6 @@ export class HomeComponent implements OnInit {
         }
       }
     });
-
   }
 
   getErrorMessage(msg: string) {
@@ -134,12 +138,13 @@ export class HomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddAlarmeComponent, {
-      width: '250px',
+      width: '350px',
       data: this.maquina,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+
+      this.buscaMaquina();
 
     });
   }

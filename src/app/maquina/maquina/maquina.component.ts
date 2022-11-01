@@ -45,7 +45,9 @@ export class MaquinaComponent implements OnInit {
       this.service.getBySigla(this.formulario.value['sigla']).subscribe({
         next: (m) => {
           if(m){
-            console.log(m)
+
+            
+
           }else{
 
             this.snackBar.open('Maquina não cadastrada', 'Ok', {
