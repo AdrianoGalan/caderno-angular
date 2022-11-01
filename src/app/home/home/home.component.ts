@@ -1,10 +1,12 @@
-import { Maquina } from 'src/app/model/maquina';
+import { MaterialModule } from 'src/material.module';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Maquina } from 'src/app/model/maquina';
 
+import { AddAlarmeComponent } from './../../alarme/add-alarme/add-alarme.component';
 import { MaquinaService } from './../../maquina/maquina.service';
 import { Alarme } from './../../model/alarme';
 import { Defeito } from './../../model/defeito';
@@ -131,15 +133,15 @@ export class HomeComponent implements OnInit {
 
 
   openDialog(): void {
-    // const dialogRef = this.dialog.open(AddAlarmeComponent, {
-    //   width: '250px',
-    //   data: this.maquina,
-    // });
+    const dialogRef = this.dialog.open(AddAlarmeComponent, {
+      width: '250px',
+      data: this.maquina,
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(result);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
 
-    // });
+    });
   }
 }
 
