@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <mat-card-title>Defeito</mat-card-title>
+  <mat-card-title>Procedimento</mat-card-title>
   <br>
   <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
@@ -8,15 +8,15 @@
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Descrição</mat-label>
         <input type="text" matInput placeholder="Erro Drive" id="descricao" formControlName="descricao">
-        <mat-error *ngIf="formulario.get('descricao')?.hasError">{{getErrorMessage('preencha o codigo')}}</mat-error>
+        <mat-error *ngIf="formulario.get('descricao')?.hasError">{{getErrorMessage('preencha a descricao')}}</mat-error>
       </mat-form-field>
 
       <br>
 
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Solução</mat-label>
-        <textarea matInput placeholder="Troca do Drive" id="solucao" formControlName="solucao"></textarea>
-        <mat-error *ngIf="formulario.get('solucao')?.hasError">{{getErrorMessage('preencha a solucao')}}</mat-error>
+        <mat-label>Procedimento</mat-label>
+        <textarea matInput placeholder="Troca do Drive" id="procedimento" formControlName="procedimento"></textarea>
+        <mat-error *ngIf="formulario.get('procedimento')?.hasError">{{getErrorMessage('preencha o procedimento')}}</mat-error>
       </mat-form-field>
 
     </mat-card-actions>
@@ -29,3 +29,4 @@
   <button mat-raised-button (click)="onNoClick()">Cancelar</button>
 
 </mat-card>
+

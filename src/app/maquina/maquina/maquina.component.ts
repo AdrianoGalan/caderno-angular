@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,6 +17,7 @@ export class MaquinaComponent implements OnInit {
   maquina: Maquina = new Maquina();
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private service: MaquinaService,
     private snackBar: MatSnackBar) {
@@ -46,9 +48,12 @@ export class MaquinaComponent implements OnInit {
         next: (m) => {
           if(m){
 
-            
+            localStorage.setItem('sigla', m.sigla)
+            this.router.navigate(['maquina/detalhe']);
 
           }else{
+
+            localStorage.setItem('sigla', '')
 
             this.snackBar.open('Maquina não cadastrada', 'Ok', {
               duration: 3000,

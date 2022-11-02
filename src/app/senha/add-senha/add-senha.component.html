@@ -1,0 +1,40 @@
+<mat-card class="container">
+  <mat-card-title>Senha</mat-card-title>
+  <br>
+  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <mat-card-actions>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input type="text" matInput placeholder="Erro Drive" id="descricao" formControlName="descricao">
+        <mat-error *ngIf="formulario.get('descricao')?.hasError">{{getErrorMessage('preencha a descricao')}}</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Login</mat-label>
+        <input type="text" matInput placeholder="Erro Drive" id="login" formControlName="login">
+        <mat-error *ngIf="formulario.get('login')?.hasError">{{getErrorMessage('preencha o login')}}</mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input type="text" matInput placeholder="Erro Drive" id="senha" formControlName="senha">
+        <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('preencha a senha')}}</mat-error>
+      </mat-form-field>
+
+
+
+    </mat-card-actions>
+
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary">Salvar</button>
+    </mat-card-actions>
+
+  </form>
+  <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+
+</mat-card>
