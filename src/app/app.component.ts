@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { UsuarioService } from './usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './login/auth.service';
@@ -27,6 +28,7 @@ export class AppComponent {
         this.mostrarMenu = mostrar
         this.getUsuario()
 
+
       }
     );
 
@@ -45,6 +47,7 @@ export class AppComponent {
 
           if (usu) {
             this.usuario = usu
+            environment.usuario = usu;
 
           }
 

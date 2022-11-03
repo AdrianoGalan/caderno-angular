@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -46,6 +47,7 @@ export class AddAlarmeComponent implements OnInit {
 
       let alarme: Alarme = this.formulario.value
       alarme.maquina = this.data;
+      alarme.autor = environment.usuario;
 
 
 

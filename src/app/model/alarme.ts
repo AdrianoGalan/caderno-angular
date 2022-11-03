@@ -1,3 +1,4 @@
+import { Usuario } from './usuairo';
 import { Maquina } from './maquina';
 
 export class Alarme {
@@ -6,6 +7,7 @@ export class Alarme {
   codigo!: string;
   descricao!: string;
   solucao!: string;
+  autor!: Usuario;
   maquina!: Maquina;
 
 }
