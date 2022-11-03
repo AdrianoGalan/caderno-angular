@@ -21,7 +21,7 @@
               <mat-icon *ngIf="expandedElementAlarme === element">keyboard_arrow_up</mat-icon>
             </button>
 
-            <button (click)="edit(0, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
+            <button (click)="openDialogEdite(0, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
               <mat-icon>edit</mat-icon>
             </button>
           </td>
@@ -71,6 +71,10 @@
               <mat-icon *ngIf="expandedElementDefeito !== element">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="expandedElementDefeito === element">keyboard_arrow_up</mat-icon>
             </button>
+
+            <button (click)="openDialogEdite(1, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>edit</mat-icon>
+            </button>
           </td>
         </ng-container>
 
@@ -119,6 +123,10 @@
               <mat-icon *ngIf="expandedElementProcedimento !== element">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="expandedElementProcedimento === element">keyboard_arrow_up</mat-icon>
             </button>
+
+            <button (click)="openDialogEdite(2, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>edit</mat-icon>
+            </button>
           </td>
         </ng-container>
 
@@ -165,6 +173,10 @@
               (click)="(expandedElementSenha = expandedElementSenha === element ? null : element); $event.stopPropagation()">
               <mat-icon *ngIf="expandedElementSenha !== element">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="expandedElementSenha === element">keyboard_arrow_up</mat-icon>
+            </button>
+
+            <button (click)="openDialogEdite(3, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>edit</mat-icon>
             </button>
           </td>
         </ng-container>

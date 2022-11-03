@@ -1,3 +1,6 @@
+import { EditSenhaComponent } from './../../senha/edit-senha/edit-senha.component';
+import { EditProcedimentoComponent } from './../../procedimento/edit-procedimento/edit-procedimento.component';
+import { EditDefeitoComponent } from './../../defeito/edit-defeito/edit-defeito.component';
 import { EditAlarmeComponent } from './../../alarme/edit-alarme/edit-alarme.component';
 import { environment } from 'src/environments/environment';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -38,7 +41,8 @@ export class MaquinaDetalheComponent implements OnInit {
 
 
 
-  com: any[] = [AddAlarmeComponent, AddDefeitoComponent, AddProcedimentoComponent, AddSenhaComponent]
+  comAdd: any[] = [AddAlarmeComponent, AddDefeitoComponent, AddProcedimentoComponent, AddSenhaComponent];
+  comEdit: any[] =[EditAlarmeComponent, EditDefeitoComponent, EditProcedimentoComponent, EditSenhaComponent];
   maquina!: Maquina;
   alarmes!: Alarme[];
   defeitos!: Defeito[];
@@ -85,13 +89,7 @@ export class MaquinaDetalheComponent implements OnInit {
     return false
   }
 
-  edit(pos: number, obj: any){
-
-    obj.maquina = this.maquina;
-
-    this.openDialogEdite(0,obj);
-
-  }
+ 
 
   buscaMaquina() {
 
@@ -131,7 +129,7 @@ export class MaquinaDetalheComponent implements OnInit {
 
   openDialog(pos: number): void {
 
-    const dialogRef = this.dialog.open(this.com[pos], {
+    const dialogRef = this.dialog.open(this.comAdd[pos], {
       width: '350px',
       data: this.maquina,
 
@@ -147,7 +145,11 @@ export class MaquinaDetalheComponent implements OnInit {
 
   openDialogEdite(pos: number, obj:any): void {
 
-    const dialogRef = this.dialog.open(EditAlarmeComponent, {
+    obj.maquina = this.maquina;
+
+    console.log(pos)
+
+    const dialogRef = this.dialog.open(this.comEdit[pos], {
       width: '350px',
       data: obj,
 
