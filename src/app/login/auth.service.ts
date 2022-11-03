@@ -42,14 +42,17 @@ export class AuthService {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
 
+      this.usuarioService.getUsuarioByEmail(localStorage.getItem('email')!).subscribe({
+        next: (u) => environment.usuario = u
+      })
+
       return true;
 
 
 
     } else {
 
-      this.usuarioAutenticado = false;
-      this.mostrarMenuEmitter.emit(false);
+      this.toLogout()
 
       return false;
     }
@@ -57,10 +60,10 @@ export class AuthService {
 
   toLogout() {
     localStorage.clear();
-    environment.usuario = new Usuario();
     this.usuarioAutenticado = false;
     this.mostrarMenuEmitter.emit(false);
     this.router.navigate(['login']);
+    environment.usuario = new Usuario();
   }
 
   checkFirstLogin(usuario: UsuarioLogin) {
@@ -83,7 +86,6 @@ export class AuthService {
 
               localStorage.setItem('token', success.headers.get('authorization'));
               localStorage.setItem('email', usuario.email)
-              environment.usuario = success;
               this.usuarioAutenticado = true;
               this.mostrarMenuEmitter.emit(true);
               this.router.navigate(['']);

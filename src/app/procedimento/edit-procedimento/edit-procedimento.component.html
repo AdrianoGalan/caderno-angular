@@ -1,1 +1,32 @@
-<p>edit-procedimento works!</p>
+<mat-card class="container">
+  <mat-card-title>Editar Procedimento</mat-card-title>
+  <br>
+  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <mat-card-actions>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input type="text" matInput placeholder="Erro Drive" id="descricao" formControlName="descricao">
+        <mat-error *ngIf="formulario.get('descricao')?.hasError">{{getErrorMessage('preencha a descricao')}}</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Procedimento</mat-label>
+        <textarea matInput placeholder="Troca do Drive" id="procedimento" formControlName="procedimento"></textarea>
+        <mat-error *ngIf="formulario.get('procedimento')?.hasError">{{getErrorMessage('preencha o procedimento')}}</mat-error>
+      </mat-form-field>
+
+    </mat-card-actions>
+
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary">Salvar</button>
+    </mat-card-actions>
+
+  </form>
+  <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+
+</mat-card>
+

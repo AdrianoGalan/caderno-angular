@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { DefeitoService } from './../defeito.service';
 import { Defeito } from './../../model/defeito';
 import { AlarmeService } from './../../alarme/alarme.service';
@@ -48,6 +49,7 @@ export class AddDefeitoComponent implements OnInit {
 
       let obj: Defeito = this.formulario.value
       obj.maquina = this.data;
+      obj.autor = environment.usuario;
 
 
 

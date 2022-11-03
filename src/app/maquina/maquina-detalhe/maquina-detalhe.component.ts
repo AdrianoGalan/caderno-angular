@@ -89,7 +89,7 @@ export class MaquinaDetalheComponent implements OnInit {
     return false
   }
 
- 
+
 
   buscaMaquina() {
 
@@ -146,8 +146,6 @@ export class MaquinaDetalheComponent implements OnInit {
   openDialogEdite(pos: number, obj:any): void {
 
     obj.maquina = this.maquina;
-
-    console.log(pos)
 
     const dialogRef = this.dialog.open(this.comEdit[pos], {
       width: '350px',
