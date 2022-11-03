@@ -45,23 +45,29 @@ export class EditAlarmeComponent implements OnInit {
 
     if (this.formulario.valid) {
 
-      console.log(this.data)
+      let alarme = this.data
 
-      this.data.codigo = this.formulario.value['codigo'];
-      this.data.descricao = this.formulario.value['descricao'];
-      this.data.solucao = this.formulario.value['solucao'];
+      alarme.codigo = this.formulario.value['codigo'];
+      alarme.descricao = this.formulario.value['descricao'];
+      alarme.solucao = this.formulario.value['solucao'];
+      alarme.maquina.alarmes = [];
+      alarme.maquina.defeitos = [];
+      alarme.maquina.senhas = [];
+      alarme.maquina.procedimentos = [];
 
 
 
 
 
-      this.service.update(this.data).subscribe({
+
+      this.service.update(alarme).subscribe({
         next: (rest) => {
 
           this.dialogRef.close();
 
         },
         error: (erro) => {
+        
           this.snackBar.open('erro', 'Ok', {
             duration: 3000,
           })
