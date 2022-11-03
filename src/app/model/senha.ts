@@ -1,3 +1,4 @@
+import { Usuario } from './usuairo';
 import { Maquina } from './maquina';
 export class Senha {
 
@@ -5,5 +6,6 @@ export class Senha {
   descricao!: string;
   login!: string;
   senha!: string;
+  autor!: Usuario;
   maquina!: Maquina;
 }

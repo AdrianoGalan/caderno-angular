@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Senha } from './../../model/senha';
 import { SenhaService } from './../senha.service';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -49,6 +50,7 @@ export class AddSenhaComponent implements OnInit {
 
       let obj: Senha = this.formulario.value
       obj.maquina = this.data;
+      obj.autor = environment.usuario;
 
 
 

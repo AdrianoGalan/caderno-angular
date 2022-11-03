@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -45,6 +46,7 @@ export class AddProcedimentoComponent implements OnInit {
 
       let obj: Procedimento = this.formulario.value
       obj.maquina = this.data;
+      obj.autor = environment.usuario;
 
 
 
