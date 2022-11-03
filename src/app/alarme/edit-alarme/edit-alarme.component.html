@@ -1,0 +1,59 @@
+<mat-card class="container">
+
+
+
+
+
+
+  <mat-card-title>Editar Alarme</mat-card-title>
+  <br>
+
+  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+    <mat-card-actions>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Codigo</mat-label>
+        <input type="text" matInput placeholder="al-115"  id="codigo" formControlName="codigo" required>
+        <mat-error *ngIf="formulario.get('codigo')?.hasError">{{getErrorMessage('preencha o codigo')}}</mat-error>
+      </mat-form-field>
+
+
+
+      <br>
+
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input type="text" matInput placeholder="Erro Drive"  id="descricao" formControlName="descricao" >
+        <mat-error *ngIf="formulario.get('descricao')?.hasError">{{getErrorMessage('preencha o codigo')}}</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Solução</mat-label>
+        <textarea  matInput placeholder="Troca do Drive"  id="solucao" formControlName="solucao" ></textarea>
+        <mat-error *ngIf="formulario.get('solucao')?.hasError">{{getErrorMessage('preencha a solucao')}}</mat-error>
+      </mat-form-field>
+
+
+
+    </mat-card-actions>
+
+
+
+
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary">Salvar</button>
+    </mat-card-actions>
+
+
+
+
+  </form>
+
+  <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+
+
+</mat-card>

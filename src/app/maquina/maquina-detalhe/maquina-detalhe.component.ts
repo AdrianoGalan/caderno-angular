@@ -1,3 +1,5 @@
+import { EditAlarmeComponent } from './../../alarme/edit-alarme/edit-alarme.component';
+import { environment } from 'src/environments/environment';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { DefeitoModule } from './../../defeito/defeito.module';
 import { AlarmeModule } from './../../alarme/alarme.module';
@@ -74,6 +76,23 @@ export class MaquinaDetalheComponent implements OnInit {
 
   }
 
+  showEdit(obj:any):boolean{
+
+    if( environment.usuario.perfis.length > 1 || obj.autor.id == environment.usuario.id ){
+      return true
+    }
+
+    return false
+  }
+
+  edit(pos: number, obj: any){
+
+    obj.maquina = this.maquina;
+
+    this.openDialogEdite(0,obj);
+
+  }
+
   buscaMaquina() {
 
     this.service.getBySigla(localStorage.getItem('sigla')!).subscribe({
@@ -115,6 +134,24 @@ export class MaquinaDetalheComponent implements OnInit {
     const dialogRef = this.dialog.open(this.com[pos], {
       width: '350px',
       data: this.maquina,
+
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.buscaMaquina();
+
+    });
+  }
+
+  openDialogEdite(pos: number, obj:any): void {
+
+    const dialogRef = this.dialog.open(EditAlarmeComponent, {
+      width: '350px',
+      data: obj,
+
+
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Usuario } from './../model/usuairo';
 import { UsuarioService } from './../usuario/usuario.service';
 import { EventEmitter, Injectable } from '@angular/core';
@@ -56,6 +57,7 @@ export class AuthService {
 
   toLogout() {
     localStorage.clear();
+    environment.usuario = new Usuario();
     this.usuarioAutenticado = false;
     this.mostrarMenuEmitter.emit(false);
     this.router.navigate(['login']);
@@ -81,6 +83,7 @@ export class AuthService {
 
               localStorage.setItem('token', success.headers.get('authorization'));
               localStorage.setItem('email', usuario.email)
+              environment.usuario = success;
               this.usuarioAutenticado = true;
               this.mostrarMenuEmitter.emit(true);
               this.router.navigate(['']);

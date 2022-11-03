@@ -14,10 +14,15 @@
         <ng-container matColumnDef="expand">
           <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
           <td mat-cell *matCellDef="let element">
+
             <button mat-icon-button aria-label="expand row"
               (click)="(expandedElementAlarme = expandedElementAlarme === element ? null : element); $event.stopPropagation()">
               <mat-icon *ngIf="expandedElementAlarme !== element">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="expandedElementAlarme === element">keyboard_arrow_up</mat-icon>
+            </button>
+
+            <button (click)="edit(0, element)"  *ngIf="showEdit(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>edit</mat-icon>
             </button>
           </td>
         </ng-container>
