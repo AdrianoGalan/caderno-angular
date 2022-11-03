@@ -42,7 +42,6 @@ export class MaquinaDetalheComponent implements OnInit {
   defeitos!: Defeito[];
   procedimentos!: Procedimento[];
   senhas!: Senha[];
-  formulario: FormGroup;
   sigla: string = 'Maquina';
 
 
@@ -63,17 +62,13 @@ export class MaquinaDetalheComponent implements OnInit {
   expandedElementSenha: Defeito | null | undefined;
 
   constructor(
-    private formBuilder: FormBuilder,
+
     private service: MaquinaService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
 
-    this.formulario = this.formBuilder.group({
 
-      sigla: [null, [Validators.required]]
-
-    });
 
     this.buscaMaquina();
 
@@ -112,34 +107,6 @@ export class MaquinaDetalheComponent implements OnInit {
 
 
 
-  }
-
-  buscar() {
-
-    if (this.formulario.valid) {
-
-
-    } else {
-
-      this.snackBar.open('Digite a Sigla', 'Ok', {
-        duration: 3000,
-      });
-
-    }
-  }
-
-  onAdd(arg0: string) {
-
-
-
-    switch (arg0) {
-      case 'alarme':
-
-        break;
-
-      default:
-        break;
-    }
   }
 
 

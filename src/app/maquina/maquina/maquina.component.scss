@@ -7,7 +7,7 @@
 }
 
 
-button{
+.button-busca{
   padding: 5px;
   margin: 5px;
   width: 100%;
@@ -29,3 +29,12 @@ mat-card-title{
 
   padding-top: 25px;
 }
+
+.example-button-container {
+  display: flex;
+  justify-content: right;
+  margin: 2em auto;
+  max-width: 1000px;
+  padding: 8px;
+}
+

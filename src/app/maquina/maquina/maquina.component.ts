@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,14 +14,17 @@ import { MaquinaService } from './../maquina.service';
 })
 export class MaquinaComponent implements OnInit {
 
+
   formulario: FormGroup;
   maquina: Maquina = new Maquina();
+  salvar: boolean = false;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: MaquinaService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog) {
 
     this.formulario = this.formBuilder.group({
 
@@ -55,6 +59,8 @@ export class MaquinaComponent implements OnInit {
 
             localStorage.setItem('sigla', '')
 
+            this.salvar = true;
+
             this.snackBar.open('Maquina não cadastrada', 'Ok', {
               duration: 3000,
             });
@@ -73,6 +79,22 @@ export class MaquinaComponent implements OnInit {
 
   onSubmit() {
     this.buscar();
+  }
+  onAdd(){
+
+    if(this.formulario.valid){
+
+      this.service.insert(this.formulario.value).subscribe({
+        next:(res) =>{
+
+          localStorage.setItem('sigla', this.formulario.value['sigla'])
+          this.router.navigate(['maquina/detalhe']);
+
+        }
+      })
+
+    }
+
   }
 
 }
