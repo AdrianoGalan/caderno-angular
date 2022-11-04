@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="sigla">
+      <mat-header-cell *matHeaderCellDef> Maquina </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClick(element)" > {{element.sigla}} </mat-cell>
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>
