@@ -7,12 +7,14 @@ import { MaterialModule } from './../../material.module';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 import { UsuarioRoutingModule } from './usuario-routing.module';
+import { ListUsuarioComponent } from './list-usuario/list-usuario.component';
 
 
 @NgModule({
   declarations: [
     NovoUsuarioComponent,
-    AtualizarUsuarioComponent
+    AtualizarUsuarioComponent,
+    ListUsuarioComponent
   ],
   imports: [
     CommonModule,

@@ -12,16 +12,17 @@
         <span>Inicio</span>
       </button>
       <button mat-menu-item [routerLink]="'maquina'">
-        <mat-icon>unfold_less</mat-icon>
+        <mat-icon>precision_manufacturing</mat-icon>
         <span>Maquina</span>
       </button>
-      <button *ngIf="usuario.perfis.length > 1" mat-menu-item [matMenuTriggerFor]="menuUsuarios" [routerLink]="''">
-        <mat-icon>density_large</mat-icon>
+      <button *ngIf="usuario.perfis.length > 1" mat-menu-item [matMenuTriggerFor]="menuUsuarios">
+        <mat-icon>person</mat-icon>
         <span>Usuarios</span>
       </button>
 
 
       <mat-menu #menuUsuarios="matMenu">
+        <button mat-menu-item [routerLink]="'usuario'">Listar</button>
         <button mat-menu-item [routerLink]="'usuario/new'">Novo</button>
         <button mat-menu-item [routerLink]="'usuario/update'">Atualizar</button>
       </mat-menu>
