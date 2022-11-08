@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { EditSenhaComponent } from './../../senha/edit-senha/edit-senha.component';
 import { EditProcedimentoComponent } from './../../procedimento/edit-procedimento/edit-procedimento.component';
 import { EditDefeitoComponent } from './../../defeito/edit-defeito/edit-defeito.component';
@@ -42,7 +43,7 @@ export class MaquinaDetalheComponent implements OnInit {
 
 
   comAdd: any[] = [AddAlarmeComponent, AddDefeitoComponent, AddProcedimentoComponent, AddSenhaComponent];
-  comEdit: any[] =[EditAlarmeComponent, EditDefeitoComponent, EditProcedimentoComponent, EditSenhaComponent];
+  comEdit: any[] = [EditAlarmeComponent, EditDefeitoComponent, EditProcedimentoComponent, EditSenhaComponent];
   maquina!: Maquina;
   alarmes!: Alarme[];
   defeitos!: Defeito[];
@@ -71,7 +72,8 @@ export class MaquinaDetalheComponent implements OnInit {
 
     private service: MaquinaService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
 
 
@@ -80,9 +82,9 @@ export class MaquinaDetalheComponent implements OnInit {
 
   }
 
-  showEdit(obj:any):boolean{
+  showEdit(obj: any): boolean {
 
-    if( environment.usuario.perfis.length > 1 || obj.autor.id == environment.usuario.id ){
+    if (environment.usuario.perfis.length > 1 || obj.autor.id == environment.usuario.id) {
       return true
     }
 
@@ -111,8 +113,10 @@ export class MaquinaDetalheComponent implements OnInit {
             duration: 3000,
           });
 
+          this.router.navigate(['/']);
+
         }
-      }
+      }, error: (erro) => this.router.navigate(['/'])
     });
   }
 
@@ -143,7 +147,7 @@ export class MaquinaDetalheComponent implements OnInit {
     });
   }
 
-  openDialogEdite(pos: number, obj:any): void {
+  openDialogEdite(pos: number, obj: any): void {
 
     obj.maquina = this.maquina;
 
