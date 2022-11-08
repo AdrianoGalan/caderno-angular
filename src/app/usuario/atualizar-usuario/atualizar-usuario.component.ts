@@ -37,7 +37,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
 
 
-  onSubmit() {
+  salvar() {
 
     this.formulario.value['email'] = localStorage.getItem("email");
 

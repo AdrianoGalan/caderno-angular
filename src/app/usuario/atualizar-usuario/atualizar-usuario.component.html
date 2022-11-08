@@ -3,7 +3,7 @@
   <mat-card-title>Novo Usuario</mat-card-title>
   <br>
 
-  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="formulario">
 
 
     <mat-card-actions>
@@ -29,9 +29,11 @@
       <mat-form-field class="full-width"  appearance="fill">
         <mat-label>Senha</mat-label>
         <input [type]="hide ? 'password' : 'text'"  matInput id="senha" formControlName="senha" required>
+
         <button mat-icon-button matSuffix (click)="hide = !hide" >
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
+
         <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('Digite a Senha')}}</mat-error>
       </mat-form-field>
 
@@ -55,7 +57,7 @@
 
     <mat-card-actions>
 
-      <button type="submit" mat-raised-button color="primary">Salvar</button>
+      <button (click)="salvar()" mat-raised-button color="primary">Salvar</button>
 
     </mat-card-actions>
 
