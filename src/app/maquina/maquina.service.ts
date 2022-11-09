@@ -20,7 +20,7 @@ export class MaquinaService {
   }
 
   getBySigla(sigla: string){
-    return this.http.get<Maquina>(`${this.API}/${sigla}`).pipe(take(1));
+    return this.http.get<Maquina>(`${this.API}${sigla}`).pipe(take(1));
   }
 
 
