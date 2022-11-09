@@ -22,7 +22,7 @@
     <ng-container matColumnDef="iconDelete">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button aria-label="expand row">
+        <button (click)="onDelete(element)" mat-icon-button aria-label="expand row">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

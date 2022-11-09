@@ -42,5 +42,11 @@ export class UsuarioService {
       .pipe(first());
   }
 
+  delete(usuario: Usuario) {
+    return this.http
+      .put<URL>(`${this.API}delete`, usuario)
+      .pipe(first());
+  }
+
 
 }
