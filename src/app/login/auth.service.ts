@@ -36,6 +36,7 @@ export class AuthService {
 
       },
       error: () => {
+        localStorage.clear();
         this.usuarioAutenticado = false;
         this.mostrarMenuEmitter.emit(false);
         this.snackBar.open('Email ou senha invalido', 'Ok', {
@@ -88,19 +89,32 @@ export class AuthService {
     this.usuarioService.getUsuarioByEmail(usuario.email).subscribe({
       next: (u) => {
 
-        if (u.restSenha == 1) {
+        if (u.status == 1) {
 
-          this.router.navigate(['/usuario/update']);
-          localStorage.setItem('email', usuario.email)
+          if (u.restSenha == 1) {
 
+            this.router.navigate(['/usuario/update']);
+            localStorage.setItem('email', usuario.email)
+
+
+          } else {
+
+            localStorage.setItem('token', success.headers.get('authorization'));
+            localStorage.setItem('email', usuario.email)
+            this.usuarioAutenticado = true;
+            this.mostrarMenuEmitter.emit(true);
+            this.router.navigate(['']);
+
+          }
 
         } else {
 
-          localStorage.setItem('token', success.headers.get('authorization'));
-          localStorage.setItem('email', usuario.email)
-          this.usuarioAutenticado = true;
-          this.mostrarMenuEmitter.emit(true);
-          this.router.navigate(['']);
+          localStorage.clear();
+          this.usuarioAutenticado = false;
+          this.mostrarMenuEmitter.emit(false);
+          this.snackBar.open('Usuario inativo', 'Ok', {
+            duration: 3000,
+          });
 
         }
 
