@@ -33,6 +33,7 @@ export class AtualizarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -72,6 +73,11 @@ export class AtualizarUsuarioComponent implements OnInit {
   }
   getErrorMessage(msg: string) {
     return msg;
+  }
+
+  cancelar() {
+    localStorage.clear();
+    this.router.navigate(['login'])
   }
 
 }

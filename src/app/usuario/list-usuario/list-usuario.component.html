@@ -13,7 +13,7 @@
     <ng-container matColumnDef="iconRest">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button aria-label="expand row">
+        <button (click)="onRest(element)" mat-icon-button aria-label="expand row">
           <mat-icon>restart_alt</mat-icon>
         </button>
       </mat-cell>

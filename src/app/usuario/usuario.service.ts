@@ -36,5 +36,11 @@ export class UsuarioService {
       .pipe(first());
   }
 
+  reset(usuario: Usuario) {
+    return this.http
+      .put<URL>(`${this.API}reset`, usuario)
+      .pipe(first());
+  }
+
 
 }

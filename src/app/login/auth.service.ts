@@ -29,7 +29,24 @@ export class AuthService {
 
   login(usuario: UsuarioLogin) {
 
-    this.checkFirstLogin(usuario);
+    this.loginService.logar(usuario).subscribe({
+      next: (success) => {
+
+        this.checkFirstLogin(usuario, success);
+
+      },
+      error: () => {
+        this.usuarioAutenticado = false;
+        this.mostrarMenuEmitter.emit(false);
+        this.snackBar.open('Email ou senha invalido', 'Ok', {
+          duration: 3000,
+        });
+      }
+    });
+
+
+
+
 
   }
 
@@ -66,12 +83,10 @@ export class AuthService {
     environment.usuario = new Usuario();
   }
 
-  checkFirstLogin(usuario: UsuarioLogin) {
+  checkFirstLogin(usuario: UsuarioLogin, success: any) {
 
     this.usuarioService.getUsuarioByEmail(usuario.email).subscribe({
       next: (u) => {
-
-
 
         if (u.restSenha == 1) {
 
@@ -81,25 +96,11 @@ export class AuthService {
 
         } else {
 
-          this.loginService.logar(usuario).subscribe(
-            (success) => {
-
-              localStorage.setItem('token', success.headers.get('authorization'));
-              localStorage.setItem('email', usuario.email)
-              this.usuarioAutenticado = true;
-              this.mostrarMenuEmitter.emit(true);
-              this.router.navigate(['']);
-
-            },
-            (error) => {
-              this.usuarioAutenticado = false;
-              this.mostrarMenuEmitter.emit(false);
-              this.snackBar.open('Email ou senha invalido', 'Ok', {
-                duration: 3000,
-              });
-            }
-          );
-
+          localStorage.setItem('token', success.headers.get('authorization'));
+          localStorage.setItem('email', usuario.email)
+          this.usuarioAutenticado = true;
+          this.mostrarMenuEmitter.emit(true);
+          this.router.navigate(['']);
 
         }
 

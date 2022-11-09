@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUsuarioComponent implements OnInit {
 
+
   dataSource: Usuario[] = [];
   displayedColumns: string[] = ['nome', 'email', 'iconRest', 'iconDelete'];
 
@@ -36,6 +37,11 @@ export class ListUsuarioComponent implements OnInit {
 
   }
 
+  onRest(usuario: Usuario) {
+
+    this.service.reset(usuario).subscribe({ next: () => this.router.navigate(['/']) })
+
+  }
 
 
 
