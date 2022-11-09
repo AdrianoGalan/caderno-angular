@@ -17,6 +17,9 @@ export class UsuarioService {
   list() {
     return this.http.get<Usuario[]>(this.API).pipe(take(1));
   }
+  listInactive() {
+    return this.http.get<Usuario[]>(`${this.API}inativo`).pipe(take(1));
+  }
 
   getUsuarioByEmail(email: string): Observable<Usuario> {
 

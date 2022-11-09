@@ -1,38 +1,69 @@
 <mat-card>
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Ativos">
 
-    <ng-container matColumnDef="nome">
-      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.nome}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.email}} </mat-cell>
-    </ng-container>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
 
-    <ng-container matColumnDef="iconRest">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button (click)="onRest(element)" mat-icon-button aria-label="expand row">
-          <mat-icon>restart_alt</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.nome}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.email}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="iconDelete">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button (click)="onDelete(element)" mat-icon-button aria-label="expand row">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="iconRest">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button (click)="onRest(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>restart_alt</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="iconDelete">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button (click)="onDelete(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
 
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
 
+    </mat-tab>
 
+    <mat-tab label="Inativos">
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <mat-table [dataSource]="dataSourceInactive" class="mat-elevation-z8 table">
+
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.nome}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)="onClick(element)"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="iconRest">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button (click)="onRest(element)" mat-icon-button aria-label="expand row">
+              <mat-icon>repartition</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsInative"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsInative;"></mat-row>
+      </mat-table>
+
+    </mat-tab>
+
+  </mat-tab-group>
 </mat-card>

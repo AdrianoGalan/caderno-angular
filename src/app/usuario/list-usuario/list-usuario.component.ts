@@ -13,7 +13,9 @@ export class ListUsuarioComponent implements OnInit {
 
 
   dataSource: Usuario[] = [];
+  dataSourceInactive: Usuario[] = [];
   displayedColumns: string[] = ['nome', 'email', 'iconRest', 'iconDelete'];
+  displayedColumnsInative: string[] = ['nome', 'email', 'iconRest'];
 
 
 
@@ -29,6 +31,7 @@ export class ListUsuarioComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.list().subscribe({ next: (res) => this.dataSource = res })
+    this.service.listInactive().subscribe({ next: (res) => this.dataSourceInactive = res })
 
   }
 
