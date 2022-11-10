@@ -32,6 +32,8 @@ export class AuthService {
     this.loginService.logar(usuario).subscribe({
       next: (success) => {
 
+        localStorage.setItem('token', success.headers.get('authorization'));
+     
         this.checkFirstLogin(usuario, success);
 
       },
@@ -60,19 +62,27 @@ export class AuthService {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
 
-      this.usuarioService.getUsuarioByEmail(localStorage.getItem('email')!).subscribe({
-        next: (u) => environment.usuario = u
-      })
+      if (localStorage.getItem('email')) {
 
-      return true;
+        this.usuarioService.getUsuarioByEmail(localStorage.getItem('email')!).subscribe({
+          next: (u) => environment.usuario = u
+        })
+
+        return true;
 
 
 
+      } else {
+
+        this.toLogout()
+
+        return false;
+      }
     } else {
-
       this.toLogout()
 
       return false;
+
     }
   }
 
@@ -85,6 +95,8 @@ export class AuthService {
   }
 
   checkFirstLogin(usuario: UsuarioLogin, success: any) {
+
+
 
     this.usuarioService.getUsuarioByEmail(usuario.email).subscribe({
       next: (u) => {
@@ -99,7 +111,6 @@ export class AuthService {
 
           } else {
 
-            localStorage.setItem('token', success.headers.get('authorization'));
             localStorage.setItem('email', usuario.email)
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);

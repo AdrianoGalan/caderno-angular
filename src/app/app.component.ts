@@ -40,7 +40,7 @@ export class AppComponent {
 
   getUsuario() {
 
-    if (localStorage.getItem("email") != this.usuario.email) {
+    if (localStorage.getItem('email') && localStorage.getItem("email") != this.usuario.email) {
 
       this.usuarioService.getUsuarioByEmail(localStorage.getItem("email")!).subscribe({
         next: (usu) => {
