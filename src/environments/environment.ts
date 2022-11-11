@@ -5,7 +5,7 @@ import { Usuario } from './../app/model/usuairo';
 
 export const environment = {
   production: false,
-  API: '/',
+  API: 'http://localhost:8080/',
   usuario: new Usuario()
 };
 
