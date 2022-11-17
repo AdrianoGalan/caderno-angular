@@ -6,7 +6,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { catchError,  Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class ErroInterceptor implements HttpInterceptor {
@@ -16,11 +16,10 @@ export class ErroInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     return next.handle(request).pipe(
-      catchError( (err) => {
-        if(err.status == 403){
+      catchError((err) => {
+        if (err.status == 403) {
           this.authService.toLogout()
         }
-
         return throwError(() => err);
       })
     )
