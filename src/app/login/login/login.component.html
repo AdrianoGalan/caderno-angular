@@ -3,7 +3,7 @@
   <mat-card-title>Login</mat-card-title>
   <br>
 
-  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="formulario">
 
 
 
@@ -35,7 +35,7 @@
 
     <mat-card-actions>
 
-      <button type="submit" mat-raised-button color="primary">Entrar</button>
+      <button (click)="onSubmit()" mat-raised-button color="primary">Entrar</button>
 
     </mat-card-actions>
 

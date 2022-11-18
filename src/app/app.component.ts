@@ -25,8 +25,9 @@ export class AppComponent {
     this.authService.mostrarMenuEmitter.subscribe(
 
       mostrar => {
-        this.mostrarMenu = mostrar
-        this.getUsuario()
+        this.getUsuario();
+        this.mostrarMenu = mostrar;
+
 
 
       }
@@ -48,6 +49,7 @@ export class AppComponent {
           if (usu) {
             this.usuario = usu
             environment.usuario = usu;
+
 
           }
 

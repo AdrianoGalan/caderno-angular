@@ -1,3 +1,4 @@
+import { AuthService } from './../../login/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from './../../model/usuairo';
 import { UsuarioService } from './../../usuario/usuario.service';
@@ -19,10 +20,11 @@ export class AtualizarUsuarioComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
+
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private authService: AuthService
   ) {
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required]],
@@ -49,9 +51,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
         this.usuarioService.update(this.formulario.value).subscribe({
           next: (rest) => {
-
-            localStorage.clear();
-            this.router.navigate(['login'])
+            this.authService.toLogout();
 
           },
           error: (erro) => {
@@ -76,8 +76,7 @@ export class AtualizarUsuarioComponent implements OnInit {
   }
 
   cancelar() {
-    localStorage.clear();
-    this.router.navigate(['login'])
+    this.authService.toLogout();
   }
 
 }

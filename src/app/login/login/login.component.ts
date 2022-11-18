@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if(this.formulario.valid){
+      
       this.usuario.senha = this.formulario.value['senha'];
       this.usuario.email = this.formulario.value['email'];
 
