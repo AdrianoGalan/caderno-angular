@@ -1,43 +1,46 @@
 <mat-card class="container">
 
-    <mat-card-title>Login</mat-card-title>
-    <br>
+  <mat-card-title>Login</mat-card-title>
+  <br>
 
-    <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
-
-
-
-      <mat-card-actions>
-        <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput placeholder="pat@example.com" id="email" formControlName="email" required>
-          <mat-error *ngIf="formulario.get('email')?.hasError">{{getErrorMessage('Email invalido')}}</mat-error>
-        </mat-form-field>
+  <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
 
 
-        <br>
-
-
-        <mat-form-field class="full-width"  appearance="fill">
-          <mat-label>Senha</mat-label>
-          <input type="password" matInput id="senha" formControlName="senha" required>
-          <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('Digite a Senha')}}</mat-error>
-
-        </mat-form-field>
-      </mat-card-actions>
+    <mat-card-actions>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="pat@example.com" id="email" formControlName="email" required>
+        <mat-error *ngIf="formulario.get('email')?.hasError">{{getErrorMessage('Email invalido')}}</mat-error>
+      </mat-form-field>
 
 
 
-
-      <mat-card-actions>
-
-        <button type="submit" mat-raised-button color="primary">Entrar</button>
-
-      </mat-card-actions>
+      <br>
 
 
-    </form>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput id="senha" formControlName="senha" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="formulario.get('senha')?.hasError">{{getErrorMessage('Digite a Senha')}}</mat-error>
+
+      </mat-form-field>
+    </mat-card-actions>
+
+
+
+
+    <mat-card-actions>
+
+      <button type="submit" mat-raised-button color="primary">Entrar</button>
+
+    </mat-card-actions>
+
+
+  </form>
 
 
 </mat-card>

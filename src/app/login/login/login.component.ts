@@ -12,6 +12,7 @@ import { AuthService } from './../auth.service';
 export class LoginComponent implements OnInit {
 
   formulario!: FormGroup;
+  hide = true;
 
   usuario: UsuarioLogin = new UsuarioLogin();
   submitted = false;
