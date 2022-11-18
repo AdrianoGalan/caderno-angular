@@ -1,14 +1,12 @@
-import { environment } from 'src/environments/environment';
-import { Senha } from './../../model/senha';
-import { SenhaService } from './../senha.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Maquina } from 'src/app/model/maquina';
+import { environment } from 'src/environments/environment';
 
-import { Procedimento } from './../../model/procedimento';
-import { ProcedimentoService } from 'src/app/procedimento/procedimento.service';
+import { Senha } from './../../model/senha';
+import { SenhaService } from './../senha.service';
 
 @Component({
   selector: 'app-add-senha',
@@ -51,7 +49,6 @@ export class AddSenhaComponent implements OnInit {
       let obj: Senha = this.formulario.value
       obj.maquina = this.data;
       obj.autor = environment.usuario;
-
 
 
       this.service.insert(obj).subscribe({
