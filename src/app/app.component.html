@@ -15,6 +15,10 @@
         <mat-icon>precision_manufacturing</mat-icon>
         <span>Maquina</span>
       </button>
+      <button mat-menu-item [routerLink]="'pdf'">
+        <mat-icon>picture_as_pdf</mat-icon>
+        <span>Gerar PDF</span>
+      </button>
       <button *ngIf="usuario.perfis.length > 1" mat-menu-item [matMenuTriggerFor]="menuUsuarios">
         <mat-icon>person</mat-icon>
         <span>Usuarios</span>
@@ -26,6 +30,8 @@
         <button mat-menu-item [routerLink]="'usuario/new'">Novo</button>
         <button mat-menu-item [routerLink]="'usuario/update'">Atualizar</button>
       </mat-menu>
+
+
     </mat-menu>
 
 

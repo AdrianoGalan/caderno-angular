@@ -25,6 +25,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./maquina/maquina.module').then((m) => m.MaquinaModule),
       canActivate: [AuthGuard]
+  },
+  {
+    path: 'pdf',
+    loadChildren: () =>
+      import('./pdf/pdf.module').then((m) => m.PdfModule),
+      canActivate: [AuthGuard]
   }
 ];
 
