@@ -13,7 +13,7 @@ export class PdfService {
   constructor(private http: HttpClient) { }
 
   gerar() {
-    return this.http.get(`${this.API}gerar`).pipe(take(1));
+    return this.http.get(`${this.API}gerar`,{responseType:'arraybuffer'}).pipe(take(1));
   }
 
 

@@ -48,23 +48,30 @@ export class GerarPdfComponent implements OnInit {
 
   gerar() {
 
-    if (!this.formulario.valid) {
 
-      this.service.gerar().subscribe({
-        next: (res) => {
-         console.log(res);
-        },
-        error: (erro) =>{
-          console.log(erro)
-        }
+
+    this.service.gerar().subscribe((res: any)=>{
+      const file = new Blob([res], {
+        type: res.type
+
+
       });
-    } else {
+    const blob = window.URL.createObjectURL(file);
 
-      this.snackBar.open('Digite a Sigla', 'Ok', {
-        duration: 3000,
-      });
+    const link = document.createElement('a');
+    link.href = blob;
+    link.download = 'maquinas.pdf'
+    link.click();
 
-    }
+    window.URL.revokeObjectURL(blob);
+    link.remove();
+
+
+    });
+
+
+
+
   }
 
   onSubmit() {
