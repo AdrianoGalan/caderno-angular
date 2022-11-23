@@ -16,6 +16,9 @@ export class PdfService {
     return this.http.get(`${this.API}gerar`,{responseType:'arraybuffer'}).pipe(take(1));
   }
 
+  gerarMaquina(sigla: string) {
+    return this.http.get(`${this.API}gerar/${sigla}`,{responseType:'arraybuffer'}).pipe(take(1));
+  }
 
 
 
